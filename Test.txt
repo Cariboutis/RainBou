@@ -1,12 +1,3 @@
 Hello
-derp
-I am a Rainbow is this working?
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-I'm a Caribou, yes it is.
-=======
-Wiggle Wiggle Wiggle something about Bous having derp?
->>>>>>> Stashed changes
-=======
-Wiggle Wiggle Wiggle something about Bous having derp?
->>>>>>> Stashed changes
+
+Everything is removed there is nothing new now!
