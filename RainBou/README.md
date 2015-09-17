@@ -1,2 +1,0 @@
-# RainBou
-RainBou Blog
