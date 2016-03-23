@@ -1,2 +1,4 @@
 *.orig
 .idea/*
+.idea
+.idea/workspace.xml
