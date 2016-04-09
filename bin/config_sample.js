@@ -1,0 +1,1 @@
+//Sample config file, please copy and rename to "config.js" for personal server configurations

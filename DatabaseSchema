@@ -1,0 +1,33 @@
+Post
+{
+    _id: String,
+    title: String,
+    sections: [Section],
+    comments: [Comment],
+    userId: String
+}
+
+Section
+{
+    _id: String,
+    title: String (nullable),
+    body: String (html included)
+}
+
+Comment
+{
+    _id: String,
+    title: String,
+    body: String,
+    userId: String
+}
+
+User
+{
+    _id: String,
+    firstName: String,
+    lastName: String,
+    email: String,
+    writer: Boolean,
+    password: String (hashed)
+}
