@@ -2,16 +2,9 @@ Post
 {
     _id: String,
     title: String,
-    sections: [Section],
+    body: String (html for styling... maybe),
     comments: [Comment],
     userId: String
-}
-
-Section
-{
-    _id: String,
-    title: String (nullable),
-    body: String (html included)
 }
 
 Comment
