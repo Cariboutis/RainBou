@@ -14,8 +14,9 @@ head
             padding-top: 50px;
         }
         .starter-template {
-            padding: 40px 15px;
+            padding: 50px 15px;
             text-align: left;
+            overflow: auto;
             background-color: aquamarine;
         }
         .container {
@@ -25,11 +26,44 @@ head
             margin-right: 0;
             width: auto;
         }
+        .vertical-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+        }
+        .vertical-menu-fancy {
+            display: block;
+            color: #000;
+            padding: 8px 0 8px 16px;
+            text-decoration: none;
+        }
+        .vertical-menu:hover{
+            background-color: #555;
+            color: white;
+        }
+        #wiggle{
+            float: left;
+        }
+        #twittera{
+            float: right;
+            background-color: coral;
+            padding: 10px 8px 70px 8px;
+        }
+        #twitterb{
+            float: right;
+            background-color: blueviolet;
+            padding: 10px 8px 70px 8px;
+        }
+
+
 
 // HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     //if lt IE 9
       script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
 .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
     .container
         .navbar-header
@@ -46,7 +80,7 @@ head
                 li
                     a(href='#about') About
                 li
-                    a(href='#contact') Contact
+                    a(href='#contact') Wiggles
                 li
                     a(href='#archives') Archives
                 li
@@ -54,12 +88,20 @@ head
         // /.nav-collapse
 .container
     .starter-template
-        h1 Bootstrap starter template
-        p.lead
-            | Use this document as a way to quickly start any new project.
-            br
-            | All you get is this text and a mostly barebones HTML document.
-// /.container
+        #wiggle
+            h1 Bootstrap starter template
+            p.lead
+                | Use this document as a way to quickly start any new project.
+                br
+                | All you get is this text and a mostly barebones HTML document.
+        #twittera
+             <a class="twitter-timeline" href="https://twitter.com/CharmHusky" data-widget-id="719453651077439488">Tweets by @CharmHusky</a>
+             script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}(document,"script","twitter-wjs");}
+        #twitterb links
+            p
+                | Some kind of link and or texts will go here
+
+        // /.container
 //
   Bootstrap core JavaScript
   ==================================================
