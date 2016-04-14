@@ -4,7 +4,8 @@ Post
     title: String,
     body: String (html for styling... maybe),
     comments: [Comment],
-    userId: String
+    userId: String,
+    timestamp: Datetime
 }
 
 Comment
@@ -12,7 +13,8 @@ Comment
     _id: String,
     title: String,
     body: String,
-    userId: String
+    userId: String,
+    timestamp: Datetime
 }
 
 User
