@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 Register
+    form(method="post")
+        .form-input
+            label Username
+            input(type="text", name="username")
+        .form-input
+            label Password
+            input(type="password", name="password")
+        .form-input
+            label Email
+            input(type="text", name="email")
+        .form-input
+            button(type="submit", value="Submit") Submit

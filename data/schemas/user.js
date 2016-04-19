@@ -2,10 +2,24 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = new Schema({
+var userSchema = new Schema({
     firstName: String,
     lastName: String,
-    email: String,
-    writer: Boolean,
+    username: {type:String, index: {unique: true}},
+    email: {type:String, index: {unique: true}},
+    admin: Boolean,
     hashed_password: String
 });
+
+userSchema.methods.verifyPassword = function(password) {
+  //TODO
+};
+
+userSchema.statics.hashPassword = function(password) {
+  //TODO
+    return password;
+};
+
+
+module.exports = userSchema;
+
