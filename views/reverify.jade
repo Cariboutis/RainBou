@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Resend Email Verification
+    if error
+        p.error= error
+    form(method="post")
+        .form-input
+            label Email
+            input(type="text", name="email")
+        .form-input
+            button(type="submit") Resend

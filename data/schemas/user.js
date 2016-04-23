@@ -8,6 +8,7 @@ var userSchema = new Schema({
     username: {type:String, index: {unique: true}},
     email: {type:String, index: {unique: true}},
     admin: Boolean,
+    createdAt: {type: Date, default: Date.now},
     hashed_password: String
 });
 

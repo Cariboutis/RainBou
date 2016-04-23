@@ -2,15 +2,17 @@ extends layout
 
 block content
     h1 Register
+    if error
+        p.error= error
     form(method="post")
         .form-input
             label Username
-            input(type="text", name="username")
+            input(type="text", name="username", value="#{(data.username != null) ? data.username : ''}")
         .form-input
             label Password
             input(type="password", name="password")
         .form-input
             label Email
-            input(type="text", name="email")
+            input(type="text", name="email", value="#{(data.email != null) ? data.email : ''}")
         .form-input
             button(type="submit", value="Submit") Submit

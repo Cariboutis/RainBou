@@ -22,36 +22,73 @@ router.post('/login',function(req,res) {
 });
 
 router.get('/register', function(req,res) {
-  res.render('register');
+  res.render('register', {data:{}});
 });
 
 router.post('/register', function(req,res, next) {
-  var email = req.body.email;
-  var user = req.body.username;
+
+  var info = {
+    email : req.body.email,
+    username : req.body.username
+  };
+
   var pass = req.body.password;
 
-  var newUser = req.db.User({
-    email: email,
-    username: user,
-    hashed_password: req.db.User.hashPassword(pass),
-    admin: false
-  });
-
-  var nev = req.db.EmailVerify;
-  nev.createTempUser(newUser, function(err, newTempUser) {
+  req.db.User.find({ $or:[{email:info.email},{username:info.username}]}, function(err,docs) {
     if(err) {
       res.send(err);
       return;
-    }
-    if(newTempUser) {
-      nev.registerTempUser(newTempUser, function(err) {
-        if(err) {
-          res.send(err);
-        }
-        res.send("SUCCESS");
-      });
     } else {
-      res.send("User not created");
+      if(docs.length != 0){
+        res.render('register', {error:"Username or Email already in use", data:info});
+      } else {
+        var newUser = req.db.User({
+          email: info.email,
+          username: info.username,
+          hashed_password: req.db.User.hashPassword(pass),
+          admin: false
+        });
+
+        var nev = req.db.EmailVerify;
+        nev.createTempUser(newUser, function(err, newTempUser) {
+          if(err) {
+            res.send(err);
+            return;
+          }
+          if(newTempUser) {
+            nev.registerTempUser(newTempUser, function(err) {
+              if(err) {
+                res.send(err);
+              }
+              res.render('index',{info:"Verification Email sent to " + info.email});
+            });
+          } else {
+            res.render('register', {error:"Username or Email already in use and waiting verification", data:info});
+          }
+        });
+      }
+    }
+  });
+});
+
+router.get('/reverify', function(req,res,next) {
+  res.render('reverify');
+});
+
+router.post('/reverify', function(req,res,next) {
+  //TODO verify user is temporarily logged in
+  var email = req.body.email;
+
+  var nev = req.db.EmailVerify;
+  nev.resendVerificationEmail(email, function(err, userFound) {
+    if(err) {
+      res.send(err); //TODO handle
+      return;
+    }
+    if(userFound){
+      res.render('index',{info:"Verification Email sent to " + email});
+    } else {
+      res.render('reverify',{error:"No user found waiting verification with that email"});
     }
   });
 });
@@ -66,7 +103,7 @@ router.get('/email-verification/:url', function(req,res,next) {
       return;
     }
     if(user){
-      res.redirect('/');
+      res.redirect('/'); //TODO redirect to profile
     } else {
       res.redirect('/register');
     }
